@@ -1,0 +1,11 @@
+{
+  "name": "cherry-theme-material",
+  "version": "1.0.0",
+  "description": "Cherry component material theme",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "author": "millzhang",
+  "license": "MIT"
+}

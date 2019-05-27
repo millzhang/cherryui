@@ -26,7 +26,7 @@
 </template>
 <script>
 export default {
-  name: 'ElButton',
+  name: 'CuButton',
 
   inject: {
     elForm: {
