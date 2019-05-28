@@ -4,7 +4,7 @@
   "description": "a meterial ui for vue",
   "main": "index.js",
   "scripts": {
-    "build:theme": "node build/bin/gen-cssfile.js && gulp build --gulpfile theme-material/gulpfile.js && cp-cli theme-material/lib lib/theme-material",
+    "build:theme": "node build/bin/gen-cssfile.js && gulp build --gulpfile theme-material/gulpfile.js && cp-cli theme-material/lib src/lib/theme-material",
     "build:file": "node build/bin/build-entry.js",
     "dev:play": "npm run build:file && cross-env NODE_ENV=development PLAY_ENV=true webpack-dev-server --config build/webpack.demo.js"
   },

@@ -1,6 +1,6 @@
 <template>
   <div style="margin: 20px;">
-    <cu-button type="primary">哈哈</cu-button>
+    <cu-button type="primary">嘿嘿</cu-button>
   </div>
 </template>
 

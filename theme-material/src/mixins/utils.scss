@@ -1,39 +1,52 @@
-@mixin utils-user-select($value) {
-  -moz-user-select: $value;
-  -webkit-user-select: $value;
-  -ms-user-select: $value;
+/* scss 工具函数方法*/
+
+// 去除css单位,保留数值
+@function strip-unit($num) {
+  @return $num/($num * 0+1);
 }
 
-@mixin utils-clearfix {
-  $selector: &;
-
-  @at-root {
-    #{$selector}::before,
-    #{$selector}::after {
-      display: table;
-      content: "";
-    }
-    #{$selector}::after {
-      clear: both
-    }
+// 将像素值转为rem值
+@function rem($values, $base: null) {
+  $rem-values: ();
+  $count: length($values);
+  // 设置默认值
+  @if $base == null {
+    $base: $base-font-size;
   }
-}
-
-@mixin utils-vertical-center {
-  $selector: &;
-
-  @at-root {
-    #{$selector}::after {
-      display: inline-block;
-      content: "";
-      height: 100%;
-      vertical-align: middle
-    }
+  // 如果默认字号是百分比,则置为16px
+  @if unit($base) == '%' {
+    $base: ($base / 100%) * 16px;
   }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
 }
 
-@mixin utils-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+@function to-rem($value, $base: null) {
+    
+    // Check if the value is a number
+    @if type-of($value) != 'number' {
+        @warn inspect($value) + ' was passed to rem(), which is not a number.';
+        @return $value;
+    }
+
+    // Transform em into rem if someone hands over 'em's
+    @if unit($value) == 'em' {
+        $value: strip-unit($value) * 1rem;
+    }
+
+    // Calculate rem if units for $value is not rem or em
+    @if unit($value) != 'rem' {
+        $value: strip-unit($value) / strip-unit($base) * 1rem;
+    }
+
+    // Turn 0rem into 0
+    @if $value == 0rem {
+        $value: 0;
+    }
+
+    @return $value;
 }
