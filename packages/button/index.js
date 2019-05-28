@@ -1,8 +1,8 @@
-import ElButton from './src/main';
+import CuButton from './src/main';
 
 /* istanbul ignore next */
-ElButton.install = function (Vue) {
-  Vue.component(ElButton.name, ElButton);
+CuButton.install = function (Vue) {
+  Vue.component(CuButton.name, CuButton);
 };
 
-export default ElButton;
+export default CuButton;
